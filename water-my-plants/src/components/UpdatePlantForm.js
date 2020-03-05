@@ -4,6 +4,11 @@ import anotherplant from '../img/logo-earth.svg';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 
+const Main2 = styled.div `
+  background: #608EFF;  
+  font-family: 'Montserrat';
+  height: 130vh;
+`
 const Main1 = styled.div `
   background: #608EFF;  
   font-family: 'Montserrat';
@@ -26,10 +31,23 @@ const UpdatePlantForm = ({ history,
     const [plantData, newPlantData] = useState({
             nickname: '',
             species: '',
-            water_schedule: ''
+            last_watered: '',
+            water_schedule: '',
+            frequency: ''
      });
+     
+    //  const [plantList, setPlantList] = useState([]);
 
-     const newId = localStorage.getItem('id')
+     const newId = localStorage.getItem('id');
+
+    //  const getPlantList=() => {
+    //     axiosWithAuth()
+    //     .get(`/plants/${id}`)
+    //     .then(res => {
+    //         setPlantList(res.data);
+    //     })
+    //     .catch(err => console.log(err))
+    //  }
 
     const handleChange = e => {
         newPlantData({
@@ -54,6 +72,7 @@ const UpdatePlantForm = ({ history,
 
 
     return (
+        <Main2>
         <Main1 className='update'>
             <form className="forms" onSubmit={handleSubmit}>
             <Header1 className="header">
@@ -66,7 +85,7 @@ const UpdatePlantForm = ({ history,
                 <input
                 id='nickname'
                 name="nickname"
-                className="each"
+                className="each1"
                 value={plantData.nickname}
                 onChange={handleChange}
                 />
@@ -76,23 +95,45 @@ const UpdatePlantForm = ({ history,
                 <input
                 id='species'
                 name='species'
-                className="each"
+                className="each1"
                 value={plantData.species}
                 onChange={handleChange}
                 />
+                <label htmlFor='last_watered'>
+                    Last Watered: YYYY-MM-DD HH:MM 
+                </label>
+                <input
+                id='last_watered'
+                name='last_watered'
+                className="each1"
+                value={plantData.last_watered}
+                onChange={handleChange}
+                />
+
                 <label htmlFor='species'>
-                    Watering Schedule: YYYY-MM-DD HH:MM
+                    Next Watering: YYYY-MM-DD HH:MM
                 </label>
                 <input
                 id='water_schedule'
                 name='water_schedule'
-                className="each"
+                className="each1"
                 value={plantData.water_schedule}
+                onChange={handleChange}
+                />
+                <label htmlFor='frequency'>
+                    Watering Frequency
+                </label>
+                <input
+                id='frequency'
+                name='frequency'
+                className="each1"
+                value={plantData.frequency}
                 onChange={handleChange}
                 />
                 <Button size="large" variant="contained" color="primary" type="submit">Submit</Button>
             </form>
         </Main1>
+        </Main2>
     )
 }
 

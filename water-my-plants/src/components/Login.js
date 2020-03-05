@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import anotherplant from '../img/logo-earth.svg';
-import * as Yup from "yup";
+
 
 
 
@@ -35,12 +35,18 @@ import * as Yup from "yup";
 //   const onSubmit = data => console.log(data);
 //   console.log(errors);
 
-  const handleUserName = e => {
-      setUser({...user, username: e.target.value});
-  }
+  // const handleUserName = e => {
+  //     setUser({...user, username: e.target.value});
+  // }
 
-  const handlePassword = e => {
-      setUser({...user, password: e.target.value})
+  // const handlePassword = e => {
+  //     setUser({...user, password: e.target.value})
+  // }
+
+  const handleChanges = e => {
+    setUser({
+      ...user, [e.target.name]: e.target.value
+    });
   }
 
   const useStyles = makeStyles(theme => ({
@@ -66,7 +72,7 @@ import * as Yup from "yup";
 //   };
 
   const login = e => {
-    e.preventDefault();
+    // e.preventDefault();
     
     axiosWithAuth()
       .post('/auth/login', user)
@@ -98,23 +104,26 @@ import * as Yup from "yup";
     
     <form 
     className = "forms"
-    onSubmit={login}
-    // onSubmit={handleSubmit(login)}
+    // onSubmit={login}
+    onSubmit={handleSubmit(login)}
     >
       <Header1 className="header">
         <img className="newplant" src={anotherplant}/>
         <h1 className = "title">Login!</h1>
       </Header1>
-      <input className = "each" type="text" placeholder="username" name="username" onChange={handleUserName} 
-      ref={register({required: true, maxLength: 10})} 
+      {errors.username && 'username is required'}
+      <input className = "each" type="text" placeholder="username" name="username" onChange={handleChanges} 
+      ref={register({required: true, maxLength: 15})}       
       />
-      <input className = "each" type="password" placeholder="password" name="password" onChange={handlePassword} 
+      {errors.password && 'password is required'}
+      <input className = "each" type="password" placeholder="password" name="password" onChange={handleChanges} 
       ref={register({required: true, maxLength: 100})} 
       />
+      
      
 
-     
-      <Button size="large" variant="contained" color="primary" type="submit" onClick={login}> Log In </Button>
+     <input className = "buttons" type="submit" />
+      {/* <Button size="large" variant="contained" color="primary" type="submit" onClick={login}> Log In </Button> */}
     </form>
     </Main>
   );

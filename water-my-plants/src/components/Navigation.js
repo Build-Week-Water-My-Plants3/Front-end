@@ -28,8 +28,10 @@ const Navigation = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
+        <a href = "https://build-week-water-my-plants3.github.io/marketing/">
         <img className='logo-img' src={logo}/>
-        <NavbarBrand className='WMP-text' href="/">Water My Plants</NavbarBrand>
+        </a>
+        <NavbarBrand className='WMP-text' >Water My Plants</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>

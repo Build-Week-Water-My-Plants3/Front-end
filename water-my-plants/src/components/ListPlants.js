@@ -12,17 +12,20 @@ const Div = styled.div`
     justify-content: space-around;
     align-content:center;
     align-items:center;
-    background: #608EFF;
+    
 `
 
 const ListPlants = (props) => {
     const plants = useContext(PlantContext);
     console.log("plants from plantContext: ", [plants] );
+
+    // const emptyArray = plants.length;
+    
     
     return(
         <Div className = 'plant-page'>
             {
-            plants && 
+            plants &&
             plants.map(flower =>{
                 return(
 

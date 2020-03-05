@@ -35,6 +35,14 @@ code {
   border-radius: 10px;
 }
 
+.each1 {
+  margin-bottom: 1.2rem;
+  width: 20rem;
+  height: 3rem;
+  border: solid 3px lightgreen;
+  border-radius: 10px;
+}
+
 .header {
   display: flex;
 }
@@ -52,4 +60,15 @@ code {
 .WMP-text {
   font-family: 'Pacifico', cursive;
   color:black;
+}
+
+.buttons {
+  background-color: dodgerblue;
+  color: white;
+  border-radius: 10px;
+  height: 3rem;
+  width: 7rem;
+}
+input[type="submit"].buttons:hover {
+  background-color: deepskyblue;
 }

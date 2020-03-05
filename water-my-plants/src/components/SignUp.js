@@ -4,17 +4,14 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import anotherplant from '../img/logo-earth.svg';
-import * as yup from "yup";
 
-const SignupSchema = yup.object().shape({
-  username: yup.string().required(),
-  age: yup
-    .number()
-    .required()
-    .positive()
-    .integer(),
-  website: yup.string().url()
-});
+
+const Main2 = styled.div `
+  background: #608EFF;  
+  font-family: 'Montserrat';
+  height: 115vh;
+  
+`
 
 const Main1 = styled.div `
   background: #608EFF;  
@@ -30,14 +27,7 @@ align-items: center;
 text-align: center;
 margin-bottom: 3rem;
 `
-const schema = yup.object().shape({
-  firstName: yup.string().required(),
-  age: yup
-    .number()
-    .required()
-    .positive()
-    .integer(),
-});
+
 
 const onSubmit = data => {
   alert(JSON.stringify(data));
@@ -45,7 +35,7 @@ const onSubmit = data => {
 
 const Signup = props => {
   
-  const { register, handleSubmit, errors } = useForm({validationSchema: SignupSchema});
+  const { register, handleSubmit, errors } = useForm({});
 //   const onSubmit = data => console.log(data);
   const [user, newUser] = useState({
     username: '',
@@ -63,7 +53,7 @@ const Signup = props => {
     }
 
 const signUp = e => {
-    e.preventDefault();
+    // e.preventDefault();
     
     axiosWithAuth()
       .post('/auth/register', user)
@@ -114,7 +104,7 @@ const signUp = e => {
 
   
   return (
-      
+    <Main2>
     <Main1>
         
     <form className = "forms" 
@@ -123,22 +113,21 @@ const signUp = e => {
       <Header1 className="header">
         <img className="newplant" src={anotherplant}/>
         <h1 className = "title">Create an Account!</h1>
-      </Header1>         
+      </Header1>
+      {errors.username && 'username is required'}         
       <input className = "each" type="text" placeholder="username" name="username" onChange={handleChanges} 
-      ref={register}/>     
-      {errors.username && <p>{errors.username.message}</p>}
+      ref={register({ required: true, maxLength: 15 })}/>     
+      {errors.password && 'password is required'}  
       <input className = "each" type="password" placeholder="password" name="password" onChange={handleChanges} 
-      ref={register} 
-      />
-      {errors.password && 'password is required'}
+      ref={register({ required: true, maxLength: 15 })}/> 
+      {errors.email && 'email is required'}        
       <input className = "each" type="email" placeholder="Email" name="email" onChange={handleChanges} 
-      ref={register({required: true, pattern: /^\S+@\S+$/i})} 
-      />
-      {errors.email && 'Please enter a valid Email address'}
+      ref={register({required: true, pattern: /^\S+@\S+$/i})}/>      
+      {errors.phone_number && 'phone number is required'}
       <input className = "each" type="tel" placeholder="Mobile number" name="phone_number" onChange={handleChanges} 
-      ref={register} 
+      ref={register({ required: true, maxLength: 15 })} 
       />
-      {errors.phone_number && 'Phone number is required'}
+      
       
       {/* <Field id="password" type="text" name="password" placeholder="password" />
             {touched.password && errors.password && (
@@ -147,10 +136,11 @@ const signUp = e => {
        
      
      
-       <input type="submit" />
-       {/* <Button size="large" variant="contained" color="primary" type="submit" onClick={signUp}> Submit </Button> */}
+       <input className = "buttons" type="submit" />
+       {/* <Button size="large" variant="contained" color="primary"  onClick={signUp}> Submit </Button> */}
     </form>
     </Main1>
+    </Main2>
   );
 }
 
