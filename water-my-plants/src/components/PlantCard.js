@@ -17,6 +17,17 @@ const PlantContainer = styled.div `
   margin-top: 25px;
   
   `
+
+const ButtonDiv = styled.div`
+    display:flex;
+    justify-content:space-around;
+    margin-top: 15px;
+`
+
+const SpaceDiv = styled.div`
+    margin-bottom: 15px;
+`
+
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
@@ -37,6 +48,10 @@ const useStyles = makeStyles({
 });
 const PlantCard = props => {
     const classes = useStyles();
+    let date = new Date(props.plants.water_schedule).toUTCString();
+    // date = date.toUTCString();
+    let lastDate = new Date(props.plants.last_watered).toUTCString();
+    console.log(date);
 
     const newId = localStorage.getItem('id')    
     
@@ -63,17 +78,26 @@ const PlantCard = props => {
                     <Typography variant='h5' component='h2'>Plant Nickname: {props.plants.nickname}</Typography>
                     <img src={plant2}/>
                     <Typography className={classes.pos} color="textSecondary">Plant Species: {props.plants.species}</Typography>
-                    <Typography variant='body2' component='p'>Watering Schedule: {props.plants.water_schedule}</Typography>
-                    <Button variant='contained' color="secondary" type='submit' onClick={deletePlant}>
-                        Delete
-                    </Button>
-                    <Link to={`/update-plant/${props.plants.id}`}>
-                        <Button variant='contained' color="primary"
-                        // onclick={props.history.push(`/update-plant/${props.plants.id}`)}
-                        >
-                            Edit
+                    <SpaceDiv>
+                        <Typography variant='body2' component='p'>Last Watered: {lastDate}</Typography>
+                    </SpaceDiv>  
+                    <SpaceDiv> 
+                        <Typography variant='body1' component='p'>Next Watering: {date}</Typography>
+                    </SpaceDiv>
+                    <Typography variant='body2' component='p'>{props.plants.frequency} times a week</Typography>
+                    
+                    <ButtonDiv>
+                        <Link to={`/update-plant/${props.plants.id}`}>
+                            <Button variant='contained' color="primary"
+                            // onclick={props.history.push(`/update-plant/${props.plants.id}`)}
+                            >
+                                Edit
+                            </Button>
+                        </Link>
+                        <Button variant='contained' color="secondary" type='submit' onClick={deletePlant}>
+                            Delete
                         </Button>
-                    </Link>
+                    </ButtonDiv>
                 </CardContent>
             </Card>
         </PlantContainer>

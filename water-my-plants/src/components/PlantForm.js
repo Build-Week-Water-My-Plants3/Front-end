@@ -5,7 +5,12 @@ import styled from "styled-components";
 import Button from '@material-ui/core/Button';
 import anotherplant from '../img/logo-earth.svg';
 
-
+const ActualContainer = styled.div `
+  background: #608EFF;  
+  font-family: 'Montserrat';
+  height: 200vh;
+  
+`
 const PlantContainer = styled.div `
   background: #608EFF;  
   font-family: 'Montserrat';
@@ -25,7 +30,9 @@ const PlantForm = ({history}) => {
     const [add, setAdd] = useState({
         nickname: '',
         species: '',
-        water_schedule: ''
+        last_watered: '',
+        water_schedule: '',
+        frequency: ''
     });
 
     const handleChange = e => {
@@ -52,6 +59,7 @@ const PlantForm = ({history}) => {
     };
 
     return (
+        <ActualContainer>
         <PlantContainer>
             
             <form className='forms' onSubmit={handleSubmit}>
@@ -60,14 +68,26 @@ const PlantForm = ({history}) => {
                 <h1 className = "title">New Plant</h1>
             </Header1>
                 
-                <input className="each" type='text' id='nickname' placeholder="nickname" name='nickname' value={add.nickname} onChange={handleChange}/>
+                <input className="each1" type='text' id='nickname' placeholder="nickname" name='nickname' value={add.nickname} onChange={handleChange}/>
                 
-                <input className="each" type='text' name='species' id='species' placeholder="species" value={add.species} onChange={handleChange}/>
-                
-                <input className="each" type='text' name='water_schedule' id='watering' placeholder="watering schedule" value={add.water_schedule} onChange={handleChange}/>
+                <input className="each1" type='text' name='species' id='species' placeholder="species" value={add.species} onChange={handleChange}/>
+                <label htmlFor='last_watered'>
+                    YYYY-MM-DD HH:MM 
+                </label>
+                <input className="each1" type='text' name='last_watered' id='last_watered' placeholder="last watered" value={add.last_watered} onChange={handleChange}/>
+                <label htmlFor='water_schedule'>
+                    YYYY-MM-DD HH:MM
+                </label>
+                <input className="each1" type='text' name='water_schedule' id='watering' placeholder="next watering" value={add.water_schedule} onChange={handleChange}/>
+                <label htmlFor='Frequecy'>
+                    Watering Amounts Per Week
+                </label>
+                <input className="each1" type='text' name='frequency' id='frequency' placeholder="frequency" value={add.frequency} onChange={handleChange}/>
+
                 <Button size="large" variant="contained" color="primary" type="submit" onClick={handleSubmit}>Submit</Button>
             </form>
         </PlantContainer>
+        </ActualContainer>
     )
 }
 
