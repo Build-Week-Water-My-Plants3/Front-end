@@ -31,12 +31,13 @@ const Navigation = (props) => {
         <a href = "https://build-week-water-my-plants3.github.io/marketing/">
         <img className='logo-img' src={logo}/>
         </a>
+        
         <NavbarBrand className='WMP-text' >Water My Plants</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/login">Login</NavLink>
+              <NavLink href="/">Login</NavLink>
             </NavItem>
             <NavItem>
               

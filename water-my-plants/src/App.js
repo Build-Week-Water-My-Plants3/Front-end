@@ -28,7 +28,7 @@ function App() {
         <ProtectedRoute exact path='plantcard' component={PlantCard} />
         <Route path='/update-plant/:id' component={UpdatePlantForm} />
         <Route path="/register" component={Signup}/>
-        <Route path="/login" component={Login}/>
+        <Route path="/" component={Login}/>
       </Switch>
 
     </div>
