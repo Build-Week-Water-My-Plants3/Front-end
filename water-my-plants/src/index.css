@@ -12,63 +12,7 @@ code {
     monospace;
 }
 
-.forms {
-  
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  
-}
-.title {
-  font-size: 4rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  
-  color: white;
-}
-.each {
-  margin-bottom: 3rem;
-  width: 20rem;
-  height: 3rem;
-  border: solid 3px lightgreen;
-  border-radius: 10px;
-}
-
-.each1 {
-  margin-bottom: 1.2rem;
-  width: 20rem;
-  height: 3rem;
-  border: solid 3px lightgreen;
-  border-radius: 10px;
-}
-
-.header {
-  display: flex;
-}
-
-.newplant {
-  max-width: 15rem;
-  margin: 1rem;
-}
-
-.logo-img {
-  max-width:3rem;
-  margin-right:0.5rem;
-}
-
-.WMP-text {
-  font-family: 'Pacifico', cursive;
-  color:black;
-}
-
-.buttons {
-  background-color: dodgerblue;
-  color: white;
-  border-radius: 10px;
-  height: 3rem;
-  width: 7rem;
-}
-input[type="submit"].buttons:hover {
-  background-color: deepskyblue;
+html, body {
+  height: 100%;
+  margin: 0;
 }
