@@ -1,0 +1,49 @@
+a {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    height: calc(2rem - 8px);
+    margin-right: 2rem;
+
+}
+
+#plantsLink:hover {
+    
+    border-bottom: 8px solid#0DCA71;
+    border-top: 8px solid transparent;
+    img {
+        display: inline-block;
+    }
+    
+
+
+}
+
+#myPlantsLink:hover {
+    
+    border-bottom: 8px solid#0DCA71;
+    border-top: 8px solid transparent;
+
+        img {
+            display: inline-block;
+        }
+    
+
+
+}
+
+#storesLink:hover {
+    
+    border-bottom: 8px solid#0DCA71;
+    border-top: 8px solid transparent;
+
+    img {
+        display: inline-block;
+    }
+    
+
+    
+
+
+}
